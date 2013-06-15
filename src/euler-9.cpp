@@ -1,7 +1,7 @@
 #include <iostream>
 #include <cassert>
 
-constexpr int max_i = 100;
+const     int max_i = 100;
 constexpr int max_j = (max_i + 1);
 
 bool constraint_1(int a, int b, int c) {
