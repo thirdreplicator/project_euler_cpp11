@@ -1,11 +1,15 @@
-targets := $(addprefix euler-,$(shell seq 1 100))
-bins    := $(addprefix ./bin/,$(targets))
-CC       = clang++ -stdlib=libc++ -std=c++0x
+sources      := $(wildcard src/*.cpp)
+targets      := $(basename $(notdir $(sources)))
+bins         := $(addprefix ./bin/,$(targets))
+CC            = clang++ -stdlib=libc++ -std=c++0x
 
 all: $(bins)
 
 ./bin/%: src/%.cpp
 	$(CC) -o $@ $<
+
+$(targets): ./bin/$@
+	make ./bin/$@
 
 clean:
 	rm bin/*
